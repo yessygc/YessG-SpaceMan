@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allTheLevelBlocks:
+  - {fileID: 5345768677342860948, guid: 90cb434400121364a96238363ea4be7a, type: 3}
   - {fileID: 6808452079803018867, guid: 436ccc541506e46e98c4a72edf973801, type: 3}
   - {fileID: 5345768677342860948, guid: 90cb434400121364a96238363ea4be7a, type: 3}
   currentLevelBlocks: []
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1936185901}
-  offset: {x: 0.2, y: 0, z: -10}
+  offset: {x: -3, y: 0, z: -10}
   dampingTime: 0.3
   velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &603380032
