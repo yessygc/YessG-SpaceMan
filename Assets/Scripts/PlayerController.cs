@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour {
     public const int INITIAL_HEALTH = 100, INITIAL_MANA = 15, 
     MAX_HEALTH = 200, MAX_MANA = 30, 
     MIN_HEALTH = 10, MIN_MANA = 0;
+     
 
+    public const int SUPERJUMP_COST = 5;
+    public const float SUPERJUMP_FORCE = 1.5F;
     public LayerMask groundMask;
 
     void Awake()
@@ -54,7 +57,11 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(Input.GetButtonDown("Jump")){
-            Jump();
+            Jump(false);
+        }
+        if (Input.GetButtonDown("Superjump"))
+        {
+            Jump(true);
         }
 
         animator.SetBool(STATE_ON_THE_GROUND, IsTouchingTheGround());
@@ -78,13 +85,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void Jump()
+    void Jump(bool superjump)
     {
+        float jumpForceFactor = jumpForce;
+        if (superjump && manaPoints >= SUPERJUMP_COST)
+        {   
+            manaPoints -= SUPERJUMP_COST;
+            jumpForceFactor *= SUPERJUMP_FORCE;
+        }
         if (GameManager.sharedInstance.currentGameState == GameState.inGame)
         {
         if (IsTouchingTheGround())
         {
-            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rigidBody.AddForce(Vector2.up * jumpForceFactor, ForceMode2D.Impulse);
         }
         }
     }

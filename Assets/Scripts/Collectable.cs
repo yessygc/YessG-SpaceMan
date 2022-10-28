@@ -50,7 +50,9 @@ public class Collectable : MonoBehaviour {
         hasBeenCollected = true;
 
         switch(this.type){
-           
+            case CollectableType.money:
+                GameManager.sharedInstance.CollectObject(this);
+                break;
 
             case CollectableType.healthPotion:
                 player.GetComponent<PlayerController>().CollectHealth(this.value);
