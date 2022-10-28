@@ -53,15 +53,18 @@ public class GameManager : MonoBehaviour{
         if (newGameState == GameState.menu)
         {
             //TODO: colocar la logica del menu
+            MenuManager.sharedInstance.ShowMainMenu();
         }else if(newGameState == GameState.inGame){
             //TODO: hay que preparar la escena para jugar 
             LevelManager.sharedInstance.RemoveAllLevelBlocks();
             LevelManager.sharedInstance.GenerateInitialBlocks();
             controller.StartGame();
+            MenuManager.sharedInstance.HideMainMenu();
             
             
         }else if (newGameState == GameState.gameOver){
             //TODO: preparar el juego para el Game Over 
+            MenuManager.sharedInstance.ShowMainMenu();
         }
 
         this.currentGameState = newGameState;
