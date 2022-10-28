@@ -119,4 +119,11 @@ public class PlayerController : MonoBehaviour {
     public void CollectMana(int points){
 
     }
+    public int GetHealth(){
+        return healthPoints;
+    }
+
+    public int GetMana(){
+        return manaPoints;
+    }
 }
